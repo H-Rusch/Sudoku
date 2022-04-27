@@ -1,10 +1,19 @@
 body {
     background-color: rgba(0.1, 0.1, 0.1, 0.05);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Game */
 #game-container * {
     font-size: 1.25em;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 #game-container h1 {
@@ -12,6 +21,7 @@ body {
 }
 
 #game-container {
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,16 +60,38 @@ body {
 }
 
 .prefilled {
-    background-color: lightgray;
+    background-color: rgb(160, 200, 255);
 }
 
 .cell:focus {
     border: none;
     outline: none;
-    background-color: lightcoral;
+    background-color:lightblue;
 }
 
 .conflicted {
     color: red;
-    background-color: rosybrown;
+}
+
+/* UI elements */ 
+.navigation {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2em;
+}
+
+.button {
+    font-size: 1.2em;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 0.5em;
+    margin-left: .5em;
+    margin-right: .5em;
+    background-color: rgb(75, 150, 255);
+    user-select: none;
+}
+
+.button:hover {
+    background-color: rgb(75, 140, 200);
+    cursor: pointer;
 }

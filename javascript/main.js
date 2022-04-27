@@ -59,7 +59,7 @@ function markConflicts(conflicts) {
         $(cellId).addClass("conflicted");
     });
 
-    let difference = [...lastConflicts].filter(id => !conflicts.has(id));
+    let difference = [...lastConflicts].filter(cellId => !conflicts.has(cellId));
     difference.forEach(cellId => {
         $(cellId).removeClass("conflicted");
     });

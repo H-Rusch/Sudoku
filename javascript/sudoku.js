@@ -42,8 +42,7 @@ class Sudoku {
         this.board[8][4] = 8;
         this.board[8][7] = 7;
 
-        // TODO deep copy the starting array, so it can be solved from the start later
-        this.startBoard = this.board.copyWithin;
+        this.startBoard = this.deepcopy(this.board);
     }
 
     makeGuess(x, y, guess) {
@@ -80,7 +79,6 @@ class Sudoku {
                 }
             }
         }
-        console.log(coordinates.length);
 
         // check for conflicts in columns
         for (let x = 0; x < this.dimension; x++) {
@@ -127,10 +125,7 @@ class Sudoku {
                         }
 
                         let rowOffset = Math.floor(l / 3);
-                        let colOffset = 1;
-                        if (l > 3) {
-                            colOffset = l % 3;
-                        }
+                        let colOffset = l % 3;
 
                         coordinates.push([col + colOffset, row + rowOffset]);
                     }
@@ -146,5 +141,19 @@ class Sudoku {
         }
 
         return coordinates;
+    }
+
+    deepcopy(matrix) {
+        let copy = Array(this.dimension).fill(null)
+            .map(item => Array(this.dimension).fill(0)
+        );
+        
+        for (let y = 0; y < this.dimension; y++) {
+            for (let x = 0; x < this.dimension; x++) {
+                copy[y][x] = matrix[y][x];
+            } 
+        }
+
+        return copy;
     }
 }
