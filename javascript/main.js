@@ -44,7 +44,7 @@ function drawBoard(sudoku) {
 
                 sudoku.makeGuess(x, y, guess);
 
-                markConflicts(sudoku.checkConflicts());
+                markConflicts(sudoku.checkConflicts(sudoku.board));
             });
         }
     }
