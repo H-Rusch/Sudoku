@@ -3,7 +3,7 @@ class Sudoku {
 
     constructor() {
         // 0: easy, 1: medium, 2: hard
-        this.difficulty = 2;
+        this.difficulty = 0;
         this.dimension = 9;
 
         this.solutions = 0;
@@ -12,6 +12,12 @@ class Sudoku {
             .map(_item => Array(this.dimension).fill(0));
 
         this.generateRandomBoard();
+        this.startingBoard = deepcopy(this.board);
+    }
+
+    setBoard(board) {
+        this.board = board;
+        this.startingBoard = deepcopy(this.board);
     }
 
     makeGuess(x, y, guess) {
@@ -120,7 +126,7 @@ class Sudoku {
             .map(_item => Array(this.dimension).fill(0));
 
         // first fill top left, middle and bottom right segment, because they are not dependant on each other
-        for (let offset = 0; offset < 3; offset++) {      
+        for (let offset = 0; offset < 3; offset++) {
             let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
             shuffle(numbers);
             for (let y = 0; y < 3; y++) {
@@ -169,10 +175,22 @@ class Sudoku {
         }
 
         this.board = matrix;
+        this.startingBoard = deepcopy(matrix);
+    }
+
+    clearBoard() {
+        this.board = Array(this.dimension).fill(null)
+            .map(_item => Array(this.dimension).fill(0));
+
+        this.startingBoard = deepcopy(this.board);
     }
 
     /* Solve a sodoku board by backtracking. Select the tile with the least possible candidates when inserting a new value. */
     solveBacktrack(matrix) {
+        if (this.checkConflicts(matrix).length != 0) {
+            return false;
+        }
+
         let candidateMapping = this.fullCandidateMapping(matrix);
         // solution found
         if (candidateMapping.size == 0) {
@@ -184,8 +202,8 @@ class Sudoku {
         // solution failed, board is in an incorrect state
         if (candidateMapping.get(key).length == 0) {
             return false;
-        } 
-        
+        }
+
         for (const n of candidateMapping.get(key)) {
             matrix[y][x] = n;
 
@@ -211,8 +229,8 @@ class Sudoku {
         // solution failed, board is in an incorrect state
         if (candidateMapping.get(key).length == 0) {
             return 0;
-        } 
-        
+        }
+
         for (const n of candidateMapping.get(key)) {
             matrix[y][x] = n;
 
@@ -276,14 +294,14 @@ class Sudoku {
     findLeastCandidates(candidateMapping) {
         let minSize = Infinity;
         let minKey = null;
-    
+
         candidateMapping.forEach((value, key) => {
             if (value.length < minSize) {
                 minSize = value.length;
                 minKey = key;
             }
         });
-    
+
         return minKey;
     }
 
@@ -308,7 +326,7 @@ function deepcopy(matrix) {
         for (let x = 0; x < matrix.length; x++) {
             copy[y][x] = matrix[y][x];
         }
-    } 
+    }
 
     return copy;
 }
@@ -322,7 +340,7 @@ function difference(set1, set2) {
  * @param {Array} a items An array containing the items.
  * https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
  */
- function shuffle(a) {
+function shuffle(a) {
     var j, x, i;
     for (i = a.length - 1; i > 0; i--) {
         j = Math.floor(Math.random() * (i + 1));

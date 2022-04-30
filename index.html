@@ -1,31 +1,144 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Sudoku</title>
-    <link rel="shortcut icon" type="image/x-icon" href="./favicon.png">
-    <link rel="stylesheet" href="./css/style.css">
-    <script src="./javascript/jquery-min.js"></script>
-    <script src="./javascript/sudoku.js"></script>
-    <script src="./javascript/main.js"></script>
-  </head>
-  <body>
-    <noscript>This website needs Javascript to be enabled.</noscript>
-    <main>
-        <div id="game-container">
-            <h1>Sudoku</h1>
-        </div>
 
-        <div class="navigation">
-            <span id="random" class="button">
-                Random Soduku
-            </span>
-            <span id="solve" class="button">
-                Solve Current
-            </span>
-            <span id="" class="button">
-                Solve Custom
-            </span>
+<head>
+  <title>Sudoku</title>
+  <link rel="shortcut icon" type="image/x-icon" href="./favicon.png">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./javascript/jquery-min.js"></script>
+  <script src="./javascript/sudoku.js"></script>
+  <script src="./javascript/main.js"></script>
+</head>
+
+<body>
+  <noscript>This website needs Javascript to be enabled.</noscript>
+  <main>
+    <div id="game-container">
+      <h1>Sudoku</h1>
+      <!-- hardcode the empty board, so there is no flickering on slow machines. -->
+      <div id="game-board">
+        <div id="row-0" class="row">
+          <input type="text" inputmode="numeric" id="0-0" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="0-1" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="0-2" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="0-3" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="0-4" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="0-5" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="0-6" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="0-7" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="0-8" class="cell" maxlength="1">
         </div>
-    </main>
- </body>
+        <div id="row-1" class="row">
+          <input type="text" inputmode="numeric" id="1-0" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="1-1" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="1-2" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="1-3" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="1-4" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="1-5" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="1-6" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="1-7" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="1-8" class="cell" maxlength="1">
+        </div>
+        <div id="row-2" class="row">
+          <input type="text" inputmode="numeric" id="2-0" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="2-1" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="2-2" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="2-3" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="2-4" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="2-5" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="2-6" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="2-7" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="2-8" class="cell" maxlength="1">
+        </div>
+        <div id="row-3" class="row">
+          <input type="text" inputmode="numeric" id="3-0" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="3-1" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="3-2" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="3-3" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="3-4" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="3-5" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="3-6" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="3-7" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="3-8" class="cell" maxlength="1">
+        </div>
+        <div id="row-4" class="row">
+          <input type="text" inputmode="numeric" id="4-0" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="4-1" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="4-2" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="4-3" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="4-4" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="4-5" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="4-6" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="4-7" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="4-8" class="cell" maxlength="1">
+        </div>
+        <div id="row-5" class="row">
+          <input type="text" inputmode="numeric" id="5-0" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="5-1" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="5-2" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="5-3" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="5-4" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="5-5" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="5-6" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="5-7" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="5-8" class="cell" maxlength="1">
+        </div>
+        <div id="row-6" class="row">
+          <input type="text" inputmode="numeric" id="6-0" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="6-1" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="6-2" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="6-3" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="6-4" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="6-5" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="6-6" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="6-7" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="6-8" class="cell" maxlength="1">
+        </div>
+        <div id="row-7" class="row">
+          <input type="text" inputmode="numeric" id="7-0" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="7-1" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="7-2" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="7-3" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="7-4" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="7-5" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="7-6" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="7-7" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="7-8" class="cell" maxlength="1">
+        </div>
+        <div id="row-8" class="row">
+          <input type="text" inputmode="numeric" id="8-0" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="8-1" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="8-2" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="8-3" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="8-4" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="8-5" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="8-6" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="8-7" class="cell" maxlength="1">
+          <input type="text" inputmode="numeric" id="8-8" class="cell" maxlength="1">
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-container-vertical">
+      <span id="alert-message" class="alert" hidden></span>
+      <div class="navigation">
+        <span id="random" class="button">
+          Generate New
+        </span>
+        <span id="solve" class="button">
+          Solve Current
+        </span>
+        <span id="clear" class="button">
+          Clear
+        </span>
+      </div>
+      <div id="difficulty-selection" class="flex-container-vertical">
+        <span id="easy" class="button">Easy </span>
+        <span id="medium" class="button">Medium</span>
+        <span id="hard" class="button">Hard</span>
+      </div>
+    </div>
+  </main>
+</body>
+
 </html>

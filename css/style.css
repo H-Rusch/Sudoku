@@ -10,6 +10,10 @@ main {
     align-items: center;
 }
 
+.flex-container-vertical {
+    display: flex;
+    flex-direction: column;
+}
 
 /* Game */
 #game-container * {
@@ -34,11 +38,11 @@ main {
     background-color: black;
 }
 
-#game-board > .row:nth-child(3n) {
+#game-board>.row:nth-child(3n) {
     margin-bottom: 2.5px;
 }
 
-#game-board > .row > input:not(:last-child):nth-child(3n) {
+#game-board>.row>input:not(:last-child):nth-child(3n) {
     margin-right: 2.5px;
 }
 
@@ -66,18 +70,18 @@ main {
 .cell:focus {
     border: none;
     outline: none;
-    background-color:lightblue;
+    background-color: lightblue;
 }
 
 .conflicted {
     color: red;
 }
 
-/* UI elements */ 
+/* UI elements */
 .navigation {
     display: flex;
     flex-direction: row;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 
 .button {
@@ -94,4 +98,17 @@ main {
 .button:hover {
     background-color: rgb(75, 140, 200);
     cursor: pointer;
+}
+
+#easy,
+#medium,
+#hard {
+    width: 3.5em;
+    margin-top: 0.5em;
+    margin-left: 2em;
+}
+
+.alert {
+    color: red;
+    align-self: center;
 }
